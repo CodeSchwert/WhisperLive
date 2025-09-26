@@ -42,25 +42,32 @@ setup(
         )
     ),
     install_requires=[
+        # Core client dependencies (always needed)
         "PyAudio",
-        "faster-whisper==1.1.0",
+        "websocket-client",
+        "scipy",
+
+        # Updated for LiveKit compatibility
+        "numpy>=1.26.0,<3.0",  # Allow both NumPy 1.x and 2.x
+        "onnxruntime>=1.18.0",  # Match LiveKit requirement
+
+        # Server dependencies (flexible versions)
+        "faster-whisper>=1.1.0",
         "torch",
         "torchaudio",
         "websockets",
-        "onnxruntime==1.17.0",
-        "scipy",
-        "websocket-client",
         "numba",
-        "openai-whisper==20240930",
+        "openai-whisper>=20240930",
         "kaldialign",
         "soundfile",
-        "tokenizers==0.20.3",
+        "tokenizers>=0.20.0",
         "librosa",
-        "numpy==1.26.4",
+
+        # Server-only dependencies (keeping for backward compatibility)
         "openvino",
         "openvino-genai",
         "openvino-tokenizers",
-        "optimum", 
+        "optimum",
         "optimum-intel",
     ],
     python_requires=">=3.9"
